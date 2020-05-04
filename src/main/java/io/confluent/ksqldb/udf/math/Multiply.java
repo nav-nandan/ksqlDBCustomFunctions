@@ -1,4 +1,4 @@
-package io.confluent.sg.ksql.udf;
+package io.confluent.ksqldb.udf.math;
 
 import io.confluent.ksql.function.udf.Udf;
 import io.confluent.ksql.function.udf.UdfDescription;
