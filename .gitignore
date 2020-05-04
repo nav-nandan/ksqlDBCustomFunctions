@@ -1,6 +1,7 @@
 .gradle
 /build/
 /bin/
+/null/
 /gradle/
 gradlew
 gradlew.bat
