@@ -1,5 +1,9 @@
 .gradle
 /build/
+/bin/
+/gradle/
+gradlew
+gradlew.bat
 
 # Ignore Gradle GUI config
 gradle-app.setting
