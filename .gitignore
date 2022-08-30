@@ -8,6 +8,8 @@
 /gradle/
 gradlew
 gradlew.bat
+.idea
+ksqlDBCustomFunctions.iml
 
 # Ignore Gradle GUI config
 gradle-app.setting
