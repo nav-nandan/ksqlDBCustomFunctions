@@ -18,11 +18,14 @@ public class RESTHandler {
     public String resthandler(
             @UdfParameter(value = "method", description = "supports GET method") final String method,
             @UdfParameter(value = "url", description = "request url") final String url,
-            @UdfParameter(value = "params", description = "request params as ?param1=<value>&param2=<value>") final String params) {
+            @UdfParameter(value = "params", description = "request params as ?param1=<value>&param2=<value>") final String params,
+            @UdfParameter(value = "authToken", description = "auth token with type e.g. abcdef123456") final String authToken) {
 
         HttpResponse<String> response = null;
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url + params)).header("Content-Type", "application/json").GET().build();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url + params))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + authToken).GET().build();
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
             e.printStackTrace();
