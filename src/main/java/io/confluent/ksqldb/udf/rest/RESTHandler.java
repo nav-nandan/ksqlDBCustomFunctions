@@ -23,10 +23,17 @@ public class RESTHandler {
 
         HttpResponse<String> response = null;
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url + params))
-                    .header("Content-Type", "application/json")
-                    .header("Authorization", "Bearer " + authToken).GET().build();
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (method.equals("GET")) {
+                HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url + params))
+                        .header("Content-Type", "application/json")
+                        .header("Authorization", "Bearer " + authToken).GET().build();
+                response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            } else if (method.equals("POST")) {
+                HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url))
+                        .POST(HttpRequest.BodyPublishers.ofString(params))
+                        .header("Content-Type", "application/json").build();
+                response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
